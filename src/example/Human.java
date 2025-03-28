@@ -1,6 +1,6 @@
 package example;
 import db.Entity;
-package example;
+
 
 import db.Entity;
 
