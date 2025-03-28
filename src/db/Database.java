@@ -12,14 +12,15 @@ public class Database {
     private Database() {}
 
     public static void add(Entity e) {
-        e.id = nextId++;
-        entities.add(e);
+      Entity copy = e.copy();
+      copy.id = entities.size() + 1;
+      entities.add(copy);
     }
 
     public static Entity get(int id) throws EntityNotFoundException {
         for (Entity e : entities) {
             if (e.id == id) {
-                return e;
+                return e.copy();
             }
         }
         throw new EntityNotFoundException(id);
@@ -27,13 +28,23 @@ public class Database {
 
 
     public static void delete(int id) throws EntityNotFoundException {
-        Entity e = get(id);
-        entities.remove(e);
+        for (int i = 0; i < entities.size(); i++) {
+            if (entities.get(i).id == id) {
+                entities.remove(i);
+                return;
+            }
+        }
+        throw new EntityNotFoundException(id);
     }
 
     public static void update(Entity e) throws EntityNotFoundException {
-        Entity existing = get(e.id);
-        entities.set(entities.indexOf(existing), e);
+        for (int i = 0; i < entities.size(); i++) {
+            if (entities.get(i).id == e.id) {
+                entities.set(i, e.copy());
+                return;
+            }
+        }
+        throw new EntityNotFoundException(e.id);
     }
 }
 
