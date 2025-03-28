@@ -14,6 +14,7 @@ public class Database {
     public static void add(Entity e) {
       Entity copy = e.copy();
       copy.id = entities.size() + 1;
+      e.id = copy.id;
       entities.add(copy);
     }
 
