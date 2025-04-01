@@ -5,5 +5,6 @@ public abstract class  Entity {
     public abstract Entity copy();
 
     public int getEntityCode() {
+        return 0;
     }
 }
