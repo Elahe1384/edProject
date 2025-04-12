@@ -19,6 +19,8 @@ public class Human extends Entity {
         }
         this.name = name;
         this.age = age;
+
+      
     }
 
     @Override
@@ -32,4 +34,6 @@ public class Human extends Entity {
     public int getEntityCode() {
         return HUMAN_ENTITY_CODE;
     }
-}
+
+
+  
