@@ -35,28 +35,20 @@ public class Database {
 
         e.id = nextId++;
         entities.add(e.copy());
+
     }
 
     public static Entity get(int id) throws EntityNotFoundException {
         for (Entity e : entities) {
             if (e.id == id) {
-                return e.copy(); 
+
             }
         }
         throw new EntityNotFoundException(id);
     }
 
     public static void delete(int id) throws EntityNotFoundException {
-        Entity e = get(id);
-        entities.removeIf(entity -> entity.id == id);
-    }
 
-    public static void update(Entity e) throws EntityNotFoundException, InvalidEntityException {
-
-        Validator validator = validators.get(e.getEntityCode());
-        if (validator != null) {
-            validator.validate(e);
-        }
 
 
         if (e instanceof Trackable) {
