@@ -1,7 +1,10 @@
 import db.Database;
+
 import example.Human;
+import example.HumanValidator;
 
 public class Main {
+<
     public static void main(String[] args) {
         Human ali = new Human("Ali");
         Database.add(ali);
